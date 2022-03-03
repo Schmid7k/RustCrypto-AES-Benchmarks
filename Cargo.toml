@@ -1,0 +1,39 @@
+[package]
+name = "RustCrypto-AES-Benchmarks"
+version = "0.0.0"
+edition = "2021"
+authors = ["Schmid7k"]
+license = "Apache-2.0"
+description = "Benchmarks of RustCrypto's AES module with focus on different block modes by making use of criterion and its cycles-per-byte plugin"
+publish = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+criterion = "0.3.5"
+criterion-cycles-per-byte = "0.1.2"
+aes = "0.8.1"
+generic-array = "0.14.5"
+cbc = "0.1.1"
+ctr = "0.9.1"
+aes-gcm = "0.9.4"
+
+[[bench]]
+name = "aes-ecb"
+path = "src/aes-ecb.rs"
+harness = false
+
+[[bench]]
+name = "aes-cbc"
+path = "src/aes-cbc.rs"
+harness = false
+
+[[bench]]
+name = "aes-ctr"
+path = "src/aes-ctr.rs"
+harness = false
+
+[[bench]]
+name = "aes-gcm"
+path = "src/aes-gcm.rs"
+harness = false
