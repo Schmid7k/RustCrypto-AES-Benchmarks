@@ -122,9 +122,8 @@ dependencies = [
 
 [[package]]
 name = "cbc"
-version = "0.1.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a2c68b1d4a461fc5641967e1b255c976579a87ef000c043850ca1aff89faa128"
+version = "0.1.2"
+source = "git+https://github.com/RustCrypto/block-modes.git#a1e06f284e98beda08f785312735c7a392d369b0"
 dependencies = [
  "cipher 0.4.3",
 ]
