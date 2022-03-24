@@ -4,6 +4,7 @@ version = "0.0.0"
 edition = "2021"
 authors = ["Schmid7k"]
 license = "Apache-2.0"
+repository = "https://github.com/Schmid7k/RustCrypto-AES-Benchmarks"
 description = "Benchmarks of RustCrypto's AES module with focus on different block modes by making use of criterion and its cycles-per-byte plugin"
 publish = false
 
