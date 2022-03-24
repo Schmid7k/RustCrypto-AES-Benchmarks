@@ -4,6 +4,7 @@ version = "0.0.0"
 edition = "2021"
 authors = ["Schmid7k"]
 license = "Apache-2.0"
+repository = "https://github.com/Schmid7k/RustCrypto-AES-Benchmarks"
 description = "Benchmarks of RustCrypto's AES module with focus on different block modes by making use of criterion and its cycles-per-byte plugin"
 publish = false
 
@@ -17,6 +18,16 @@ generic-array = "0.14.5"
 cbc = { git = "https://github.com/RustCrypto/block-modes.git" }
 ctr = "0.9.1"
 aes-gcm = "0.9.4"
+
+[profile.bench]
+opt-level = 3
+#codegen-units = 1
+debug = false
+debug-assertions = false
+#lto = "fat"
+rpath = false
+panic = "abort"
+incremental = false
 
 [[bench]]
 name = "aes-ecb"

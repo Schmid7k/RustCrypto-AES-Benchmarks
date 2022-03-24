@@ -12,7 +12,7 @@ fn bench(c: &mut Criterion<CyclesPerByte>) {
     let cipher256 = Aes256Gcm::new(&Default::default());
 
     for size in &[KB, 2 * KB, 4 * KB, 8 * KB, 16 * KB] {
-        let buf = vec![Default::default(); *size / 16];
+        let buf = vec![Default::default(); *size];
 
         group.throughput(Throughput::Bytes(*size as u64));
 
