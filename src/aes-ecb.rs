@@ -3,7 +3,7 @@ use aes::{Aes128Enc, Aes192Enc, Aes256Enc};
 use benches::KB;
 use criterion::{criterion_group, criterion_main, BenchmarkId, Criterion, Throughput};
 use criterion_cycles_per_byte::CyclesPerByte;
-use RustCrypto_AES_Benchmarks as benches;
+use rust_crypto_aes_benchmarks as benches;
 
 fn bench(c: &mut Criterion<CyclesPerByte>) {
     let mut group = c.benchmark_group("aes-ecb");

@@ -1,5 +1,5 @@
 [package]
-name = "RustCrypto-AES-Benchmarks"
+name = "rust_crypto_aes_benchmarks"
 version = "0.0.0"
 edition = "2021"
 authors = ["Schmid7k"]
