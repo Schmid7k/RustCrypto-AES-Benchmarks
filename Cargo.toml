@@ -21,12 +21,12 @@ aes-gcm = "0.9.4"
 
 [profile.bench]
 opt-level = 3
-#codegen-units = 1
+codegen-units = 1
 debug = false
 debug-assertions = false
-#lto = "fat"
+lto = "fat"
 rpath = false
-panic = "abort"
+#panic = "abort" This is ignored for bench profile
 incremental = false
 
 [[bench]]
