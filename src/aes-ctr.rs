@@ -17,7 +17,7 @@ fn bench(c: &mut Criterion<CyclesPerByte>) {
     let mut cipher256_128 = Aes256Ctr128LE::new(&Default::default(), &Default::default());
 
     for size in &[KB, 2 * KB, 4 * KB, 8 * KB, 16 * KB] {
-        let mut buf = vec![Default::default(); *size];
+        let mut buf = vec![0u8; *size];
 
         group.throughput(Throughput::Bytes((*size) as u64));
 

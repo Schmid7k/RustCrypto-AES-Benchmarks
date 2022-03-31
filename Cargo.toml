@@ -17,7 +17,7 @@ aes = "0.8.1"
 generic-array = "0.14.5"
 cbc = { git = "https://github.com/RustCrypto/block-modes.git" }
 ctr = "0.9.1"
-aes-gcm = "0.9.4"
+aes-gcm = { git = "https://github.com/RustCrypto/AEADs.git" }
 
 [profile.bench]
 opt-level = 3
