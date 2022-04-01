@@ -15,9 +15,10 @@ criterion = "0.3.5"
 criterion-cycles-per-byte = "0.1.2"
 aes = "0.8.1"
 generic-array = "0.14.5"
-cbc = { git = "https://github.com/RustCrypto/block-modes.git" }
+cbc = "0.1.2"
 ctr = "0.9.1"
-aes-gcm = { git = "https://github.com/RustCrypto/AEADs.git" }
+#aes-gcm = "0.9.4" Not yet up to date version
+aes-gcm = { git = "https://github.com/RustCrypto/AEADs.git" } # Latest changes directly from the repo
 
 [profile.bench]
 opt-level = 3
