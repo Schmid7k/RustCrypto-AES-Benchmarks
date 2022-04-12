@@ -1,9 +1,8 @@
 use aes::cipher::{KeyIvInit, StreamCipher};
 use aes::{Aes128, Aes192, Aes256};
-use benches::KB;
 use criterion::{criterion_group, criterion_main, BenchmarkId, Criterion, Throughput};
 use criterion_cycles_per_byte::CyclesPerByte;
-use rust_crypto_aes_benchmarks as benches;
+use rust_crypto_aes_benchmarks::KB;
 
 type Aes128Ctr128LE = ctr::Ctr128LE<Aes128>;
 type Aes192Ctr128LE = ctr::Ctr128LE<Aes192>;

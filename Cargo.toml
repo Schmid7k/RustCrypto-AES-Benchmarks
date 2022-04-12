@@ -32,20 +32,20 @@ incremental = false
 
 [[bench]]
 name = "aes-ecb"
-path = "src/aes-ecb.rs"
+path = "src/aes_ecb.rs"
 harness = false
 
 [[bench]]
 name = "aes-cbc"
-path = "src/aes-cbc.rs"
+path = "src/aes_cbc.rs"
 harness = false
 
 [[bench]]
 name = "aes-ctr"
-path = "src/aes-ctr.rs"
+path = "src/aes_ctr.rs"
 harness = false
 
 [[bench]]
 name = "aes-gcm"
-path = "src/aes-gcm.rs"
+path = "src/aes_gcm.rs"
 harness = false
