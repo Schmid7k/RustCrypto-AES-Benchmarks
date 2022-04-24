@@ -24,7 +24,7 @@ aes-gcm = { git = "https://github.com/RustCrypto/AEADs.git", features = [
 
 [profile.bench]
 opt-level = 3
-#codegen-units = 1
+#codegen-units = 1 # Uncomment for AMD
 debug = false
 debug-assertions = false
 lto = "fat"
