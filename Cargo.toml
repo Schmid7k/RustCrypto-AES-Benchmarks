@@ -18,11 +18,13 @@ generic-array = "0.14.5"
 cbc = "0.1.2"
 ctr = "0.9.1"
 #aes-gcm = "0.9.4" Not yet up to date version
-aes-gcm = { git = "https://github.com/RustCrypto/AEADs.git" } # Latest changes directly from the repo
+aes-gcm = { git = "https://github.com/RustCrypto/AEADs.git", features = [
+    "heapless",
+] } # Latest changes directly from the repo
 
 [profile.bench]
 opt-level = 3
-codegen-units = 1
+#codegen-units = 1
 debug = false
 debug-assertions = false
 lto = "fat"
