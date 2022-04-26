@@ -1,5 +1,5 @@
 use aes_gcm::aead::{Aead, NewAead};
-use aes_gcm::{Aes128Gcm, Aes256Gcm};
+use aes_gcm::{AeadInPlace, Aes128Gcm, Aes256Gcm};
 use criterion::{criterion_group, criterion_main, BenchmarkId, Criterion, Throughput};
 use criterion_cycles_per_byte::CyclesPerByte;
 use rust_crypto_aes_benchmarks::KB;
@@ -12,16 +12,16 @@ fn bench(c: &mut Criterion<CyclesPerByte>) {
     let nonce = &Default::default();
 
     for size in &[KB, 2 * KB, 4 * KB, 8 * KB, 16 * KB] {
-        let buf = vec![0u8; *size];
+        let mut buf = vec![0u8; *size];
 
         group.throughput(Throughput::Bytes(*size as u64));
 
         group.bench_function(BenchmarkId::new("encrypt-128", size), |b| {
-            b.iter(|| cipher128.encrypt(&nonce, &*buf).unwrap());
+            b.iter(|| cipher128.encrypt_in_place_detached(nonce, b"", &mut buf));
         });
 
         group.bench_function(BenchmarkId::new("encrypt-256", size), |b| {
-            b.iter(|| cipher256.encrypt(&nonce, &*buf).unwrap());
+            b.iter(|| cipher256.encrypt_in_place_detached(nonce, b"", &mut buf));
         });
     }
 
