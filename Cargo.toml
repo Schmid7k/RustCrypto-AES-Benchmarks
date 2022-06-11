@@ -21,6 +21,8 @@ ctr = "0.9.1"
 aes-gcm = { git = "https://github.com/RustCrypto/AEADs.git", features = [
     "heapless",
 ] } # Latest changes directly from the repo
+deoxys = "0.0.2"
+rand = "0.8.5"
 
 [profile.bench]
 opt-level = 3
@@ -50,4 +52,9 @@ harness = false
 [[bench]]
 name = "aes-gcm"
 path = "src/aes_gcm.rs"
+harness = false
+
+[[bench]]
+name = "deoxys"
+path = "src/deoxys.rs"
 harness = false
