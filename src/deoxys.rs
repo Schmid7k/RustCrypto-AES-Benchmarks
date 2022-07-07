@@ -1,7 +1,7 @@
 use criterion::{criterion_group, criterion_main, BenchmarkId, Criterion, Throughput};
 use criterion_cycles_per_byte::CyclesPerByte;
 use deoxys::aead::{Aead, NewAead};
-use deoxys::{DeoxysI128, DeoxysI256, Key, Nonce};
+use deoxys::{DeoxysI128, DeoxysI256};
 use rand::rngs::OsRng;
 use rand::RngCore;
 use rust_crypto_aes_benchmarks::KB;
