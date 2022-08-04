@@ -1,5 +1,4 @@
-use aes_gcm::aead::NewAead;
-use aes_gcm::{AeadInPlace, Aes128Gcm, Aes256Gcm};
+use aes_gcm::{aead::{AeadInPlace, OsRng, KeyInit}, Aes128Gcm, Aes256Gcm, Nonce};
 use criterion::{criterion_group, criterion_main, BenchmarkId, Criterion, Throughput};
 use criterion_cycles_per_byte::CyclesPerByte;
 use rust_crypto_aes_benchmarks::KB;
@@ -7,9 +6,12 @@ use rust_crypto_aes_benchmarks::KB;
 fn bench(c: &mut Criterion<CyclesPerByte>) {
     let mut group = c.benchmark_group("aes-gcm");
 
-    let cipher128 = Aes128Gcm::new(&Default::default());
-    let cipher256 = Aes256Gcm::new(&Default::default());
-    let nonce = &Default::default();
+    let key1 = Aes128Gcm::generate_key(&mut OsRng);
+    let key2 = Aes256Gcm::generate_key(&mut OsRng);
+
+    let cipher128 = Aes128Gcm::new(&key1);
+    let cipher256 = Aes256Gcm::new(&key2);
+    let nonce = Nonce::from_slice(b"unique nonce");
 
     for size in &[KB, 2 * KB, 4 * KB, 8 * KB, 16 * KB] {
         let mut buf = vec![0u8; *size];

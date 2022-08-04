@@ -1,8 +1,6 @@
 use criterion::{criterion_group, criterion_main, BenchmarkId, Criterion, Throughput};
 use criterion_cycles_per_byte::CyclesPerByte;
-use deoxys::aead::{Aead, NewAead};
-use deoxys::{DeoxysI128, DeoxysI256};
-use rand::rngs::OsRng;
+use deoxys::{aead::{Aead, KeyInit, OsRng}, DeoxysI128, DeoxysI256, Nonce};
 use rand::RngCore;
 use rust_crypto_aes_benchmarks::KB;
 
@@ -10,9 +8,12 @@ fn bench(c: &mut Criterion<CyclesPerByte>) {
     let mut group = c.benchmark_group("deoxys");
     let mut rng = OsRng;
 
-    let cipher128 = DeoxysI128::new(&Default::default());
-    let cipher256 = DeoxysI256::new(&Default::default());
-    let nonce = &Default::default();
+    let key1 = DeoxysI128::generate_key(&mut OsRng);
+    let key2 = DeoxysI256::generate_key(&mut OsRng);
+
+    let cipher128 = DeoxysI128::new(&key1);
+    let cipher256 = DeoxysI256::new(&key2);
+    let nonce = Nonce::from_slice(b"unique nonce123");
 
     for size in &[KB, 2 * KB, 4 * KB, 8 * KB, 16 * KB] {
         let mut buf = vec![0; *size / 16];
